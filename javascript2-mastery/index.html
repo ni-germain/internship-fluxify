@@ -9,15 +9,17 @@
 <body>
   <main>
     <h1>🚀 Reusable Modal Component</h1>
-    <button class="open-modal-btn">Open Modal</button>
+    <button onclick="showModal('Welcome!', 'This is your first reusable modal.')">Open Welcome Modal</button>
+    <button onclick="showModal('Delete Item', 'Are you sure you want to delete this item?')">Open Warning Modal</button>
+    <button onclick="showModal('Success', 'Your data was saved successfully!')">Open Success Modal</button>
   </main>
 
-  <!-- Modal structure -->
+  <!-- Modal HTML -->
   <div class="modal hidden">
     <div class="modal-content">
       <span class="close-modal">&times;</span>
-      <h2>Modal Title</h2>
-      <p>This is a reusable modal component.</p>
+      <h2 class="modal-title"></h2>   <!-- EMPTY on load -->
+      <p class="modal-message"></p>    <!-- EMPTY on load -->
     </div>
   </div>
   <div class="overlay hidden"></div>
