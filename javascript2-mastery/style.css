@@ -1,83 +1,87 @@
 body {
-  font-family: sans-serif;
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-  flex-direction: column;
-  background-color: #eef2f3;
+  padding: 50px;
 }
 
-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  margin: 10px;
-  cursor: pointer;
-  border: none;
-  background-color: #2d89ef;
-  color: white;
+.todo-container {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 500px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  width: 70%;
+  margin-right: 10px;
+  border: 1px solid #ccc;
   border-radius: 5px;
 }
 
-button:hover {
-  background-color: #1b5fbb;
-}
-
-/* Modal Styling */
-.modal,
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.hidden {
-  display: none;
-}
-
-.overlay {
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 10;
-}
-
-.modal {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 20;
-}
-
-.modal-content {
-  background: white;
-  padding: 2rem;
-  border-radius: 10px;
-  width: 90%;
-  max-width: 400px;
-  text-align: center;
-  position: relative;
-  animation: fadeIn 0.3s ease;
-}
-
-.close-modal {
-  position: absolute;
-  right: 1rem;
-  top: 1rem;
-  font-size: 24px;
+button {
+  padding: 10px 15px;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 5px;
   cursor: pointer;
-  font-weight: bold;
 }
 
-/* Animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+button:hover {
+  background: #0056b3;
+}
+
+.filters {
+  margin-top: 20px;
+}
+
+.filters .filter {
+  margin-right: 10px;
+  background: #eee;
+  color: black;
+}
+
+.filters .filter.active {
+  background: #007bff;
+  color: white;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+li {
+  background: #f9f9f9;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li.completed {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+li.pending {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.task-text {
+  flex: 1;
+}
+
+li button {
+  margin-left: 5px;
+  font-size: 14px;
 }

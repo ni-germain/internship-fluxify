@@ -1,28 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Reusable Modal</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Advanced To-Do List</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main>
-    <h1>🚀 Reusable Modal Component</h1>
-    <button onclick="showModal('Welcome!', 'This is your first reusable modal.')">Open Welcome Modal</button>
-    <button onclick="showModal('Delete Item', 'Are you sure you want to delete this item?')">Open Warning Modal</button>
-    <button onclick="showModal('Success', 'Your data was saved successfully!')">Open Success Modal</button>
-  </main>
+  <div class="todo-container">
+    <h2>📝 Advanced To-Do List</h2>
+    <input type="text" id="taskInput" placeholder="Enter your task" />
+    <button id="addTaskBtn">Add Task</button>
 
-  <!-- Modal HTML -->
-  <div class="modal hidden">
-    <div class="modal-content">
-      <span class="close-modal">&times;</span>
-      <h2 class="modal-title"></h2>   <!-- EMPTY on load -->
-      <p class="modal-message"></p>    <!-- EMPTY on load -->
+    <div class="filters">
+      <button class="filter active" data-filter="all">All</button>
+      <button class="filter" data-filter="pending">Pending</button>
+      <button class="filter" data-filter="completed">Completed</button>
     </div>
+
+    <ul id="taskList"></ul>
   </div>
-  <div class="overlay hidden"></div>
 
   <script src="script.js"></script>
 </body>
