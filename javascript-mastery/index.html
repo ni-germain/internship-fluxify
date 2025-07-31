@@ -4,19 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Advanced Weather Dashboard</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
 </head>
 <body>
   <div class="container">
     <header>
       <h1>Advanced Weather Dashboard</h1>
-      <div class="search-container">
-        <input type="text" id="cityInput" placeholder="Search city..." autocomplete="off" />
+      <div class="search-wrapper">
+        <input type="text" id="cityInput" placeholder="Search for a city..." autocomplete="off" />
         <ul id="autocompleteList" class="autocomplete-list"></ul>
-        <button id="searchBtn">Search</button>
-        <button id="geoBtn" title="Use current location">📍</button>
+        <button id="searchBtn" aria-label="Search city">Search</button>
+        <button id="geoBtn" aria-label="Use current location">📍</button>
       </div>
+
       <div class="temp-toggle">
         <label><input type="radio" name="tempUnit" value="metric" checked /> °C</label>
         <label><input type="radio" name="tempUnit" value="imperial" /> °F</label>
@@ -27,7 +28,7 @@
       <section id="currentWeather" class="weather-section">
         <h2>Current Weather</h2>
         <div class="weather-card" id="currentCard">
-          <!-- dynamically filled -->
+          <!-- Current weather info injected here -->
         </div>
       </section>
 
@@ -38,12 +39,14 @@
 
       <section id="alerts" class="weather-section">
         <h2>Weather Alerts</h2>
-        <ul id="alertsList"></ul>
+        <ul id="alertsList" class="alerts-list">
+          <!-- Alerts injected here -->
+        </ul>
       </section>
 
       <section id="savedCities" class="weather-section">
         <h2>Saved Cities</h2>
-        <ul id="citiesList"></ul>
+        <ul id="citiesList" class="saved-cities-list"></ul>
       </section>
     </main>
   </div>
