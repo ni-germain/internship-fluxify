@@ -1,26 +1,51 @@
-<!-- javascript-mastery/project1-number-guessing-game/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Number Guessing Game</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Advanced Weather Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
 </head>
 <body>
-  <main class="game-container">
-    <h1>🎯 Number Guessing Game</h1>
-    <p>Guess a number between <strong>1</strong> and <strong>100</strong>.</p>
+  <div class="container">
+    <header>
+      <h1>Advanced Weather Dashboard</h1>
+      <div class="search-container">
+        <input type="text" id="cityInput" placeholder="Search city..." autocomplete="off" />
+        <ul id="autocompleteList" class="autocomplete-list"></ul>
+        <button id="searchBtn">Search</button>
+        <button id="geoBtn" title="Use current location">📍</button>
+      </div>
+      <div class="temp-toggle">
+        <label><input type="radio" name="tempUnit" value="metric" checked /> °C</label>
+        <label><input type="radio" name="tempUnit" value="imperial" /> °F</label>
+      </div>
+    </header>
 
-    <input type="number" id="guess-input" placeholder="Enter your guess" />
-    <button id="guess-btn">Guess</button>
+    <main>
+      <section id="currentWeather" class="weather-section">
+        <h2>Current Weather</h2>
+        <div class="weather-card" id="currentCard">
+          <!-- dynamically filled -->
+        </div>
+      </section>
 
-    <p id="feedback" class="feedback"></p>
-    <p>Attempts: <span id="attempts">0</span></p>
+      <section id="forecast" class="weather-section">
+        <h2>5-Day Forecast</h2>
+        <div id="forecastCards" class="forecast-cards"></div>
+      </section>
 
-    <button id="reset-btn">🔁 Reset Game</button>
-  </main>
+      <section id="alerts" class="weather-section">
+        <h2>Weather Alerts</h2>
+        <ul id="alertsList"></ul>
+      </section>
 
-  <script src="script.js"></script>
+      <section id="savedCities" class="weather-section">
+        <h2>Saved Cities</h2>
+        <ul id="citiesList"></ul>
+      </section>
+    </main>
+  </div>
 </body>
 </html>

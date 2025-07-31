@@ -1,39 +1,222 @@
-/* javascript-mastery/project1-number-guessing-game/style.css */
+/* Basic Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
+  background: linear-gradient(120deg, #74ebd5 0%, #ACB6E5 100%);
+  color: #222;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
+  align-items: flex-start;
+  padding: 20px;
 }
 
-.game-container {
+.container {
+  max-width: 900px;
+  width: 100%;
   background: white;
-  padding: 2rem;
-  border-radius: 10px;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+header {
   text-align: center;
-  width: 90%;
-  max-width: 400px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
-input[type="number"] {
-  padding: 10px;
-  width: 80%;
-  margin-bottom: 10px;
-  font-size: 16px;
-}
-
-button {
-  padding: 10px 20px;
-  font-size: 16px;
+.search-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
   margin-top: 10px;
+}
+
+#cityInput {
+  width: 250px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #bbb;
+  font-size: 1rem;
+}
+
+#autocompleteList {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 250px;
+  background: white;
+  border: 1px solid #ccc;
+  border-top: none;
+  max-height: 150px;
+  overflow-y: auto;
+  list-style: none;
+  z-index: 10;
+  display: none;
+}
+
+#autocompleteList li {
+  padding: 8px;
   cursor: pointer;
 }
 
-.feedback {
+#autocompleteList li:hover {
+  background-color: #f0f0f0;
+}
+
+#searchBtn, #geoBtn {
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#searchBtn {
+  background-color: #0077ff;
+  color: white;
+}
+
+#geoBtn {
+  background-color: #00c853;
+  color: white;
+}
+
+#searchBtn:hover {
+  background-color: #005fcc;
+}
+
+#geoBtn:hover {
+  background-color: #009624;
+}
+
+.temp-toggle {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.temp-toggle label {
   font-weight: bold;
-  margin: 10px 0;
+  cursor: pointer;
+}
+
+.weather-section {
+  margin-top: 30px;
+}
+
+.weather-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #e3f2fd;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  animation: fadeIn 0.7s ease;
+}
+
+.weather-card img {
+  width: 70px;
+  height: 70px;
+  animation: bounce 1.5s infinite;
+}
+
+.weather-info {
+  flex-grow: 1;
+}
+
+.weather-info h3 {
+  margin-bottom: 8px;
+}
+
+.forecast-cards {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.forecast-card {
+  background: #bbdefb;
+  padding: 10px;
+  border-radius: 10px;
+  width: 130px;
+  text-align: center;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  animation: fadeIn 0.7s ease;
+}
+
+.forecast-card img {
+  width: 50px;
+  height: 50px;
+}
+
+#alertsList {
+  list-style: none;
+  background: #ffebee;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+#alertsList li {
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #c62828;
+}
+
+/* Saved Cities List */
+#citiesList {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#citiesList li {
+  background: #0077ff;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s ease;
+}
+
+#citiesList li:hover {
+  background-color: #005fcc;
+}
+
+/* Animations */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .weather-card {
+    flex-direction: column;
+  }
+  .forecast-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+  #cityInput {
+    width: 150px;
+  }
 }

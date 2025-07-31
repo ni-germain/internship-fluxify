@@ -1,75 +1,46 @@
-const taskInput = document.getElementById('taskInput');
-const addTaskBtn = document.getElementById('addTaskBtn');
-const taskList = document.getElementById('taskList');
-const filterButtons = document.querySelectorAll('.filter');
-
 let tasks = [];
 
-function renderTasks(filter = "all") {
-  taskList.innerHTML = "";
-
-  tasks.forEach((task, index) => {
-    if (
-      filter === "all" ||
-      (filter === "completed" && task.completed) ||
-      (filter === "pending" && !task.completed)
-    ) {
-      const li = document.createElement('li');
-      li.classList.add(task.completed ? 'completed' : 'pending');
-
-      const status = task.completed ? "[Completed ✅]" : "[Pending ⏳]";
-
-      li.innerHTML = `
-        <span class="task-text">${task.text} <small>${status}</small></span>
-        <div>
-          <button onclick="toggleComplete(${index})">${task.completed ? '↩️' : '✅'}</button>
-          <button onclick="editTask(${index})">🖊️</button>
-          <button onclick="deleteTask(${index})">❌</button>
-        </div>
-      `;
-      taskList.appendChild(li);
-    }
-  });
-}
-
-addTaskBtn.addEventListener('click', () => {
-  const text = taskInput.value.trim();
-  if (text === "") return;
-
-  tasks.push({ text, completed: false });
-  taskInput.value = "";
-  renderTasks(getActiveFilter());
-});
-
-function toggleComplete(index) {
-  tasks[index].completed = !tasks[index].completed;
-  renderTasks(getActiveFilter());
-}
-
-function deleteTask(index) {
-  tasks.splice(index, 1);
-  renderTasks(getActiveFilter());
-}
-
-function editTask(index) {
-  const newText = prompt("Edit your task:", tasks[index].text);
-  if (newText && newText.trim()) {
-    tasks[index].text = newText.trim();
-    renderTasks(getActiveFilter());
+function addTask() {
+  const input = document.getElementById("taskInput");
+  const text = input.value.trim();
+  if (text !== "") {
+    tasks.push({ text, completed: false });
+    input.value = "";
+    renderTasks();
   }
 }
 
-filterButtons.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    filterButtons.forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-    renderTasks(btn.getAttribute("data-filter"));
-  });
-});
+function renderTasks(filter = "all") {
+  const list = document.getElementById("taskList");
+  list.innerHTML = "";
 
-function getActiveFilter() {
-  const activeBtn = document.querySelector('.filter.active');
-  return activeBtn ? activeBtn.getAttribute('data-filter') : 'all';
+  tasks.forEach((task, index) => {
+    if (filter === "completed" && !task.completed) return;
+    if (filter === "pending" && task.completed) return;
+
+    const li = document.createElement("li");
+    li.className = `list-group-item d-flex justify-content-between align-items-center ${task.completed ? "completed" : "pending"}`;
+    li.innerHTML = `
+      ${task.text}
+      <div>
+        <button class="btn btn-sm btn-outline-success me-2" onclick="markCompleted(${index})">Complete</button>
+        <button class="btn btn-sm btn-outline-secondary" onclick="markPending(${index})">Pending</button>
+      </div>
+    `;
+    list.appendChild(li);
+  });
 }
 
-renderTasks();
+function markCompleted(index) {
+  tasks[index].completed = true;
+  renderTasks();
+}
+
+function markPending(index) {
+  tasks[index].completed = false;
+  renderTasks();
+}
+
+function filterTasks(type) {
+  renderTasks(type);
+}
