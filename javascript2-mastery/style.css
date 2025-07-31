@@ -1,12 +1,49 @@
+body {
+  background-color: #121212;
+  color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+input, select {
+  background-color: #1e1e1e;
+  color: white;
+  border: 1px solid #555;
+}
+
+input::placeholder {
+  color: #aaa;
+}
+
 .completed {
-  background-color: #d4edda;
+  background-color: #2e7d32 !important;
   text-decoration: line-through;
+  color: #fff !important;
 }
 
 .pending {
-  background-color: #fff3cd;
+  background-color: #fbc02d !important;
+  color: #000 !important;
 }
 
-li {
-  transition: all 0.3s ease;
+.high {
+  border-left: 5px solid red;
+}
+.medium {
+  border-left: 5px solid orange;
+}
+.low {
+  border-left: 5px solid green;
+}
+
+.list-group-item {
+  background-color: #1e1e1e;
+  color: white;
+  transition: transform 0.3s ease;
+}
+.list-group-item:hover {
+  transform: scale(1.01);
+}
+
+button {
+  transition: background-color 0.3s ease;
 }
